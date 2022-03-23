@@ -1,4 +1,7 @@
 import * as express from 'express';
+import * as bodyParser from 'body-parser';
+// import { errorMiddleware } from './database/middlewares';
+import loginRouter from './database/routes/login.route';
 
 class App {
   public app: express.Express;
@@ -19,14 +22,16 @@ class App {
     };
 
     this.app.use(accessControl);
-    // ...
+    this.app.use(bodyParser.json());
+
+    this.app.use('/login', loginRouter);
+
+    // this.app.use(errorMiddleware);
   }
 
   // ...
   public start(PORT: string | number):void {
-    this.app.listen(PORT, () => {
-      console.log(`Server started on port ${PORT}`);
-    });
+    this.app.listen(PORT, () => { console.log(`Listening on port ${PORT}`); });
   }
 }
 

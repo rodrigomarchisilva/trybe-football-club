@@ -9,12 +9,11 @@ export default class Club extends Model {
 
 Club.init({
   id: {
-    allowNull: false,
     autoIncrement: true,
     primaryKey: true,
     type: DataTypes.INTEGER,
   },
-  clubName: { type: DataTypes.STRING, allowNull: false },
+  clubName: DataTypes.STRING,
 }, {
   underscored: true,
   sequelize: db,
@@ -22,5 +21,8 @@ Club.init({
   timestamps: false,
 });
 
-Club.hasMany(Match, { foreignKey: 'id', as: 'matchs' });
-Match.belongsTo(Club, { foreignKey: 'id', as: 'clubs' });
+Match.belongsTo(Club, { foreignKey: 'homeTeam', as: 'homeClub' });
+Match.belongsTo(Club, { foreignKey: 'awayTeam', as: 'awayClub' });
+
+Club.hasMany(Match, { foreignKey: 'homeTeam', as: 'homeMatches' });
+Club.hasMany(Match, { foreignKey: 'awayTeam', as: 'awayMatches' });
