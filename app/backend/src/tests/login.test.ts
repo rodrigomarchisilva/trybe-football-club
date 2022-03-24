@@ -5,6 +5,7 @@ import { Response } from 'superagent';
 import { app } from '../app';
 import User from '../database/models/User';
 import { ErrorMessages } from '../database/enums';
+import { generateToken } from '../database/utilities';
 
 chai.use(chaiHttp);
 const {expect} = chai;
@@ -123,6 +124,21 @@ describe('1 - test login.route', () => {
 
       expect(chaiHttpResponse).to.be.status(401);
       expect(chaiHttpResponse.body.message).to.equal(incorrectMessage);
+    });
+  });
+
+  describe('1.8 - if given a valid token', () => {
+
+    before(async () => { sinon.stub(User, "findOne").resolves(user); });
+    after(() => { (User.findOne as sinon.SinonStub).restore(); });
+
+    it('a) should return a response with the role', async () => {
+      const token = await generateToken(email);
+      console.log(token);
+      const chaiHttpResponse: Response = await chai.request(app).get('/login/validate').set({ 'authorization': token });
+
+      expect(chaiHttpResponse).to.be.status(200);
+      expect(chaiHttpResponse.body).to.equal('admin');
     });
   });
 });
