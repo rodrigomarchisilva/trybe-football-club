@@ -1,9 +1,9 @@
 import User from '../models/User';
 
 export default class UsersService {
-  readonly userModel = User;
+  readonly usersModel = User;
 
   async getUserByEmail(email: string): Promise<User | null> {
-    return this.userModel.findOne({ where: { email } });
+    return this.usersModel.findOne({ where: { email } });
   }
 }

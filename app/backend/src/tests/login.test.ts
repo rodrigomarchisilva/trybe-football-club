@@ -6,6 +6,7 @@ import { app } from '../app';
 import User from '../database/models/User';
 import { ErrorMessages } from '../database/enums';
 import { generateToken } from '../database/utilities';
+import Club from '../database/models/Club';
 
 chai.use(chaiHttp);
 const {expect} = chai;
@@ -40,6 +41,18 @@ const requisitionBodies = {
 };
 
 const { valid, noEmail, wrongPatternEmail, fakeEmail, noPassword, shortLengthPassword, wrongPassword } = requisitionBodies;
+
+const club1 = new Club();
+club1.id = 1;
+club1.clubName = 'Club 1';
+
+const club2 = new Club();
+club2.id = 2;
+club2.clubName = 'Club 2';
+
+const databaseArray: Club[] = [club1, club2];
+
+const clubsArray: {}[] = [{ id: 1, clubName: 'Club 1' }, { id: 2, clubName: 'Club 2' }];
 
 describe('1 - test login.route', () => {
 
@@ -134,7 +147,6 @@ describe('1 - test login.route', () => {
 
     it('a) should return a response with the role', async () => {
       const token = await generateToken(email);
-      console.log(token);
       const chaiHttpResponse: Response = await chai.request(app).get('/login/validate').set({ 'authorization': token });
 
       expect(chaiHttpResponse).to.be.status(200);

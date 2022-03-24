@@ -1,7 +1,7 @@
 import * as express from 'express';
 import * as bodyParser from 'body-parser';
 // import { errorMiddleware } from './database/middlewares';
-import loginRouter from './database/routes/login.route';
+import { loginRouter, clubsRouter } from './database/routes';
 
 class App {
   public app: express.Express;
@@ -25,6 +25,7 @@ class App {
     this.app.use(bodyParser.json());
 
     this.app.use('/login', loginRouter);
+    this.app.use('/clubs', clubsRouter);
 
     // this.app.use(errorMiddleware);
   }

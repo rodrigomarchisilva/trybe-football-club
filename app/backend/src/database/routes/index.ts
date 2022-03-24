@@ -1,3 +1,4 @@
 import loginRouter from './login.route';
+import clubsRouter from './clubs.route';
 
-export default loginRouter;
+export { loginRouter, clubsRouter };
