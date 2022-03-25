@@ -9,4 +9,10 @@ clubsRouter.get('/', async (_req: Request, res: Response) => {
   res.status(200).json(clubs);
 });
 
+clubsRouter.get('/:id', async (req: Request, res: Response) => {
+  const { id } = req.params;
+  const club = await clubsController.getClubById(id);
+  res.status(200).json(club);
+});
+
 export default clubsRouter;

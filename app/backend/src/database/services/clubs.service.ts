@@ -6,4 +6,8 @@ export default class ClubsService {
   async getAllClubs(): Promise<Club[]> {
     return this.clubsModel.findAll();
   }
+
+  async getClubById(id: string): Promise<Club | null> {
+    return this.clubsModel.findByPk(id);
+  }
 }

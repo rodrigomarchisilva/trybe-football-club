@@ -7,4 +7,8 @@ export default class ClubsController {
   async getAllClubs(): Promise<Club[]> {
     return this.clubsService.getAllClubs();
   }
+
+  async getClubById(id: string): Promise<Club | null> {
+    return this.clubsService.getClubById(id);
+  }
 }
