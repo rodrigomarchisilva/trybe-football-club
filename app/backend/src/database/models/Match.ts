@@ -12,7 +12,7 @@ export default class Match extends Model {
 
   public awayTeamGoals: number;
 
-  public inProgress: number;
+  public inProgress: boolean;
 }
 
 Match.init({
@@ -26,7 +26,7 @@ Match.init({
   homeTeamGoals: DataTypes.INTEGER,
   awayTeam: DataTypes.INTEGER,
   awayTeamGoals: DataTypes.INTEGER,
-  inProgress: DataTypes.INTEGER,
+  inProgress: DataTypes.BOOLEAN,
 }, {
   underscored: true,
   sequelize: db,
