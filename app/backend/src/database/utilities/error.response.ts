@@ -1,10 +1,11 @@
 import { Response } from 'express';
 import { ErrorMessages, ErrorCodes } from '../enums';
 
-export default function errorResponse(res: Response, key: string) {
-  const messageIndex: number = Object.keys(ErrorMessages).indexOf(key);
-  const codeIndex: number = Object.keys(ErrorCodes).indexOf(key);
-  const message = Object.values(ErrorMessages)[messageIndex];
-  const code = Number(Object.values(ErrorCodes)[codeIndex]);
+type ErrorMessagesKey = keyof typeof ErrorMessages;
+type ErrorCodesKey = keyof typeof ErrorCodes;
+
+export default function errorResponse(res: Response, key: ErrorMessagesKey | ErrorCodesKey) {
+  const message = ErrorMessages[key];
+  const code = +ErrorCodes[key];
   return res.status(code).json({ message });
 }

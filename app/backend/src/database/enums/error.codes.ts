@@ -4,6 +4,8 @@ enum ErrorCodes {
   TOKEN_INVALID = '401',
   TOKEN_BLANK = '401',
   EMAIL_INVALID = '401',
+  TEAMS_SAME = '401',
+  TEAMS_INVALID = '401',
 }
 
 export default ErrorCodes;

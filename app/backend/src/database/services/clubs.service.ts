@@ -10,4 +10,11 @@ export default class ClubsService {
   async getClubById(id: string): Promise<Club | null> {
     return this.clubsModel.findByPk(id);
   }
+
+  async checkMatchClubs(homeClub: number, awayClub: number): Promise<boolean> {
+    const clubsInfo = await this.clubsModel.findAll({
+      where: { id: [homeClub, awayClub] },
+    });
+    return clubsInfo.length === 2;
+  }
 }

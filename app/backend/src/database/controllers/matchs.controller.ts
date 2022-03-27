@@ -7,4 +7,16 @@ export default class MatchsController {
   async getAllMatchs(): Promise<Match[]> {
     return this.matchsService.getAllMatchs();
   }
+
+  async getMatchsByStatus(inProgress: string): Promise<Match[]> {
+    return this.matchsService.getMatchsByStatus(inProgress);
+  }
+
+  async createMatchInProgress(match: Match): Promise<number> {
+    return this.matchsService.createMatchInProgress(match);
+  }
+
+  async finishMatch(id: string): Promise<void> {
+    this.matchsService.finishMatch(id);
+  }
 }
