@@ -1,5 +1,6 @@
 import { MatchsService } from '../services';
 import Match from '../models/Match';
+import { UpdatedScore } from '../interfaces';
 
 export default class MatchsController {
   readonly matchsService = new MatchsService();
@@ -18,5 +19,9 @@ export default class MatchsController {
 
   async finishMatch(id: string): Promise<void> {
     this.matchsService.finishMatch(id);
+  }
+
+  async updateScore(id: string, updatedScore: UpdatedScore): Promise<void> {
+    this.matchsService.updateScore(id, updatedScore);
   }
 }

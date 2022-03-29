@@ -1,5 +1,6 @@
 import Club from '../models/Club';
 import Match from '../models/Match';
+import { UpdatedScore } from '../interfaces';
 
 export default class MatchsService {
   readonly matchsModel = Match;
@@ -31,5 +32,13 @@ export default class MatchsService {
 
   async finishMatch(id: string): Promise<void> {
     this.matchsModel.update({ inProgress: false }, { where: { id } });
+  }
+
+  async updateScore(id: string, updatedScore: UpdatedScore): Promise<void> {
+    const { homeTeamGoals, awayTeamGoals } = updatedScore;
+    this.matchsModel.update(
+      { homeTeamGoals, awayTeamGoals },
+      { where: { id } },
+    );
   }
 }

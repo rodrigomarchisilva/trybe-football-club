@@ -1,7 +1,7 @@
 import { Request, Response, NextFunction } from 'express';
 import { errorResponse } from '../utilities';
 import { ClubsService } from '../services';
-import NewMatch from '../interfaces';
+import { NewMatch } from '../interfaces';
 
 const clubsService = new ClubsService();
 

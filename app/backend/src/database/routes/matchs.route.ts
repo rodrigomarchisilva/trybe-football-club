@@ -1,6 +1,7 @@
 import { Router, Request, Response } from 'express';
 import { MatchsController } from '../controllers';
 import { tokenValidation, matchsValidation } from '../middlewares';
+import { UpdatedScore } from '../interfaces';
 
 const matchsRouter = Router({ mergeParams: true });
 const matchsController = new MatchsController();
@@ -22,6 +23,13 @@ matchsRouter.post('/', tokenValidation, matchsValidation, async (req: Request, r
 matchsRouter.patch('/:id/finish', async (req: Request, res: Response) => {
   const { id } = req.params;
   await matchsController.finishMatch(id);
+  res.status(200).json({ message: 'Match finished' });
+});
+
+matchsRouter.patch('/:id', async (req: Request, res: Response) => {
+  const { id } = req.params;
+  const updatedScore: UpdatedScore = req.body;
+  await matchsController.updateScore(id, updatedScore);
   res.status(200).json({ message: 'Match finished' });
 });
 
