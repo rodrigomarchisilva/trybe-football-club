@@ -15,7 +15,7 @@ export default class MatchsService {
 
   async getMatchsByStatus(inProgress: string): Promise<Match[]> {
     return this.matchsModel.findAll({
-      where: { inProgress },
+      where: { inProgress: JSON.parse(inProgress) },
       include: [
         { model: Club, as: 'homeClub', attributes: { exclude: ['id'] } },
         { model: Club, as: 'awayClub', attributes: { exclude: ['id'] } },
