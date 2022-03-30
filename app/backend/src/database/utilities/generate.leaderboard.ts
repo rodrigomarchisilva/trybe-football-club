@@ -33,29 +33,25 @@ const results = (homeMatches: Match[], awayMatches: Match[]) => {
   output.homeTotal = homeMatches.length;
   output.awayTotal = awayMatches.length;
   output.total = homeMatches.length + awayMatches.length;
-  output.homeVictories = homeMatches.filter((homeMatch) => (
-    homeMatch.homeTeamGoals > homeMatch.awayTeamGoals)).length;
-  output.awayVictories = awayMatches.filter((awayMatch) => (
-    awayMatch.awayTeamGoals > awayMatch.homeTeamGoals)).length;
+  output.homeVictories = homeMatches.filter((hm) => hm.homeTeamGoals > hm.awayTeamGoals).length;
+  output.awayVictories = awayMatches.filter((am) => am.awayTeamGoals > am.homeTeamGoals).length;
   output.victories = output.homeVictories + output.awayVictories;
-  output.homeLosses = homeMatches.filter((homeMatch) => (
-    homeMatch.homeTeamGoals < homeMatch.awayTeamGoals)).length;
-  output.awayLosses = awayMatches.filter((awayMatch) => (
-    awayMatch.awayTeamGoals < awayMatch.homeTeamGoals)).length;
-  output.losses = output.homeLosses - output.awayLosses;
+  output.homeLosses = homeMatches.filter((hm) => hm.homeTeamGoals < hm.awayTeamGoals).length;
+  output.awayLosses = awayMatches.filter((am) => am.awayTeamGoals < am.homeTeamGoals).length;
+  output.losses = output.homeLosses + output.awayLosses;
   output.homeDraws = output.homeTotal - output.homeVictories - output.homeLosses;
   output.awayDraws = output.awayTotal - output.awayVictories - output.awayLosses;
-  output.draws = output.homeDraws - output.awayDraws;
+  output.draws = output.homeDraws + output.awayDraws;
   return output;
 };
 
 const goals = (homeMatches: Match[], awayMatches: Match[]) => {
   const output = {} as Goals;
-  output.homeFavor = homeMatches?.reduce((acc, match) => acc + match.homeTeamGoals, 0);
-  output.awayFavor = awayMatches?.reduce((acc, match) => acc + match.awayTeamGoals, 0);
+  output.homeFavor = homeMatches.reduce((acc, hm) => acc + hm.homeTeamGoals, 0);
+  output.awayFavor = awayMatches.reduce((acc, am) => acc + am.awayTeamGoals, 0);
   output.favor = output.homeFavor + output.awayFavor;
-  output.homeOwn = homeMatches?.reduce((acc, match) => acc + match.awayTeamGoals, 0);
-  output.awayOwn = awayMatches?.reduce((acc, match) => acc + match.homeTeamGoals, 0);
+  output.homeOwn = homeMatches.reduce((acc, hm) => acc + hm.awayTeamGoals, 0);
+  output.awayOwn = awayMatches.reduce((acc, am) => acc + am.homeTeamGoals, 0);
   output.own = output.homeOwn + output.awayOwn;
   output.homeBalance = output.homeFavor - output.homeOwn;
   output.awayBalance = output.awayFavor - output.awayOwn;
