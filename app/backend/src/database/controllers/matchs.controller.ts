@@ -1,11 +1,11 @@
 import { MatchsService } from '../services';
 import Match from '../models/Match';
-import { UpdatedScore } from '../interfaces';
+import { MatchInfo, UpdatedScore } from '../interfaces';
 
 export default class MatchsController {
   readonly matchsService = new MatchsService();
 
-  async getAllMatchs(): Promise<Match[]> {
+  async getAllMatchs(): Promise<MatchInfo[]> {
     return this.matchsService.getAllMatchs();
   }
 

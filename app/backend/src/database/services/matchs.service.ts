@@ -1,17 +1,21 @@
 import Club from '../models/Club';
 import Match from '../models/Match';
-import { UpdatedScore } from '../interfaces';
+// import { ClubsService } from '.';
+import { UpdatedScore, /* Leaderboards, */ MatchInfo } from '../interfaces';
 
 export default class MatchsService {
   readonly matchsModel = Match;
 
-  async getAllMatchs(): Promise<Match[]> {
-    return this.matchsModel.findAll({
+  readonly clubsModel = Club;
+
+  async getAllMatchs(): Promise<MatchInfo[]> {
+    const matchs = await this.matchsModel.findAll({
       include: [
         { model: Club, as: 'homeClub', attributes: { exclude: ['id'] } },
         { model: Club, as: 'awayClub', attributes: { exclude: ['id'] } },
       ],
     });
+    return matchs as MatchInfo[];
   }
 
   async getMatchsByStatus(inProgress: string): Promise<Match[]> {
