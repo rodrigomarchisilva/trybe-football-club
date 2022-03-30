@@ -21,14 +21,14 @@ export default class ClubsService {
     return clubsInfo.length === 2;
   }
 
-  async getLeaderboard(): Promise<LeaderboardRow[]> {
+  async getLeaderboard(type: string): Promise<LeaderboardRow[]> {
     const clubsLeaderboardData = await this.clubsModel.findAll({
       include: [
         { model: Match, as: 'homeMatches', where: { inProgress: false } },
         { model: Match, as: 'awayMatches', where: { inProgress: false } },
       ],
     }) as ClubMatches[];
-    const leaderboard = generateLeaderboard(clubsLeaderboardData);
+    const leaderboard = generateLeaderboard(clubsLeaderboardData, type);
     return leaderboard;
   }
 }
