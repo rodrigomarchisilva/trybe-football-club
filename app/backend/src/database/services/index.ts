@@ -1,6 +1,6 @@
 import LoginService from './login.service';
 import UsersService from './users.service';
-import MatchsService from './matchs.service';
+import MatchesService from './matches.service';
 import ClubsService from './clubs.service';
 
-export { LoginService, UsersService, MatchsService, ClubsService };
+export { LoginService, UsersService, MatchesService, ClubsService };

@@ -3,23 +3,23 @@ import Match from '../models/Match';
 // import { ClubsService } from '.';
 import { UpdatedScore, /* Leaderboards, */ MatchInfo } from '../interfaces';
 
-export default class MatchsService {
-  readonly matchsModel = Match;
+export default class MatchesService {
+  readonly matchesModel = Match;
 
   readonly clubsModel = Club;
 
-  async getAllMatchs(): Promise<MatchInfo[]> {
-    const matchs = await this.matchsModel.findAll({
+  async getAllMatches(): Promise<MatchInfo[]> {
+    const matches = await this.matchesModel.findAll({
       include: [
         { model: Club, as: 'homeClub', attributes: { exclude: ['id'] } },
         { model: Club, as: 'awayClub', attributes: { exclude: ['id'] } },
       ],
     });
-    return matchs as MatchInfo[];
+    return matches as MatchInfo[];
   }
 
-  async getMatchsByStatus(inProgress: string): Promise<Match[]> {
-    return this.matchsModel.findAll({
+  async getMatchesByStatus(inProgress: string): Promise<Match[]> {
+    return this.matchesModel.findAll({
       where: { inProgress: JSON.parse(inProgress) },
       include: [
         { model: Club, as: 'homeClub', attributes: { exclude: ['id'] } },
@@ -29,18 +29,18 @@ export default class MatchsService {
   }
 
   async createMatchInProgress(match: Match): Promise<number> {
-    const insertionInfo = await this.matchsModel.create(match);
+    const insertionInfo = await this.matchesModel.create(match);
     const matchId = insertionInfo.id;
     return matchId;
   }
 
   async finishMatch(id: string): Promise<void> {
-    this.matchsModel.update({ inProgress: false }, { where: { id } });
+    this.matchesModel.update({ inProgress: false }, { where: { id } });
   }
 
   async updateScore(id: string, updatedScore: UpdatedScore): Promise<void> {
     const { homeTeamGoals, awayTeamGoals } = updatedScore;
-    this.matchsModel.update(
+    this.matchesModel.update(
       { homeTeamGoals, awayTeamGoals },
       { where: { id } },
     );

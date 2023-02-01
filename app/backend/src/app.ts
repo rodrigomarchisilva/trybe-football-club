@@ -2,7 +2,7 @@ import * as express from 'express';
 import * as bodyParser from 'body-parser';
 import * as Cors from 'cors';
 import { loginRouter, clubsRouter, leaderboardsRouter } from './database/routes';
-import matchsRouter from './database/routes/matchs.route';
+import matchesRouter from './database/routes/matches.route';
 
 class App {
   public app: express.Express;
@@ -28,7 +28,7 @@ class App {
 
     this.app.use('/login', loginRouter);
     this.app.use('/clubs', clubsRouter);
-    this.app.use('/matchs', matchsRouter);
+    this.app.use('/matches', matchesRouter);
     this.app.use('/leaderboard', leaderboardsRouter);
   }
 

@@ -18,6 +18,6 @@ const validateTeams = async (req: Request, res: Response, next: NextFunction) =>
   next();
 };
 
-const matchsValidation = [compareTeams, validateTeams];
+const matchesValidation = [compareTeams, validateTeams];
 
-export default matchsValidation;
+export default matchesValidation;
