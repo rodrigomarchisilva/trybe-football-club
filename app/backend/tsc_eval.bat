@@ -1,10 +1,10 @@
-#!/bin/bash
+@echo off
 
 npx -y tsc
 
-if [ $? != 0 ]; then
+if %errorlevel% neq 0 (
   echo "Ocorreu um ero ao compilar o TypeScript, verifique seu código e tente novamente"
-  exit 1
-fi
+  exit /b 1
+)
 
-# build: "/bin/sh tsc_eval.sh"
+@REM build: tsc_eval.bat
