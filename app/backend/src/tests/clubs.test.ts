@@ -1,5 +1,6 @@
 import * as sinon from 'sinon';
 import * as chai from 'chai';
+// @ts-ignore:1202
 import chaiHttp = require('chai-http');
 import { Response } from 'superagent';
 import { app } from '../app';
