@@ -48,4 +48,17 @@ describe('2 - test clubs.route', () => {
       expect(chaiHttpResponse.body).to.deep.equal(responseClubs[0]);
     });
   });
+
+  describe('2.3 - when trying to get a club by id and the club does not exist', () => {
+
+    before(async () => { sinon.stub(Club, "findByPk").resolves(null); });
+    after(() => { (Club.findByPk as sinon.SinonStub).restore(); });
+
+    it('a) a 404 error should be returned with the message "Club not found"', async () => {
+      const chaiHttpResponse: Response = await chai.request(app).get('/clubs/1');
+
+      expect(chaiHttpResponse).to.be.status(404);
+      expect(chaiHttpResponse.body).to.deep.equal({ message: 'Club not found' });
+    });
+  });
 });
