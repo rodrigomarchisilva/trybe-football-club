@@ -12,6 +12,7 @@ clubsRouter.get('/', async (_req: Request, res: Response) => {
 clubsRouter.get('/:id', async (req: Request, res: Response) => {
   const { id } = req.params;
   const club = await clubsController.getClubById(id);
+  if (!club) return res.status(404).json({ message: 'Club not found' });
   res.status(200).json(club);
 });
 
