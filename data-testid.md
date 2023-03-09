@@ -1,11 +1,14 @@
-## HEADER
+# data-testId
+
+## Header
+
 0 - data-testid="header__title"
 1 - data-testid="header__login_btn"
-2 - data-testid="header__show_matchs_btn"
+2 - data-testid="header__show_matches_btn"
 3 - data-testid="header__show_classification_btn"
 4 - data-testid="header__add_match_btn"
 
-## Page of classification
+## Page of classification part 1
 
 5 - data-testid="score_boarding__classification"
 6 - data-testid="score_boarding__club_name"
@@ -19,11 +22,13 @@
 14 - data-testid="score_boarding__goals_balance"
 15 - data-testid="score_boarding__efficiency"
 
-16 - data-testid="score_boarding__classification_" 
-17 - data-testid="score_boarding__club_name_"  
+## Page of classification part 2
+
+16 - data-testid="score_boarding__classification_"
+17 - data-testid="score_boarding__club_name_"
 18 - data-testid="score_boarding__total_points_"
 19 - data-testid="score_boarding__total_games_"
-20 - data-testid="score_boarding__total_victories_" 
+20 - data-testid="score_boarding__total_victories_"
 21 - data-testid="score_boarding__total_draws_"
 22 - data-testid="score_boarding__total_looses_"
 23 - data-testid="score_boarding__goals_favor_"
@@ -31,32 +36,30 @@
 25 - data-testid="score_boarding__goals_balance_"
 26 - data-testid="score_boarding__efficiency_"
 
-
-## LOGIN
+## Login
 
 27 - data-testid="login__login_input"
 28 - data-testid="login__password_input"
 29 - data-testid="login__login_btn"
 ?? - data-testid="login__input_invalid_login_alert"
 
-## JOGOS
+## Jogos
 
-30 - data-testid="matchs__option_show_finish_matchs"
-?? - data-testid="matchs__search_match_btn"
-31 - data-testid="matchs__home_team_"
-32 - data-testid="matchs__home_team_goals_"
-33 - data-testid="matchs__away_team_goals_"
-34 - data-testid="matchs__away_team_"
-35 - data-testid="matchs__match_status_"
-35 - data-testid="matchs__match_status_btn_"
+30 - data-testid="matches__option_show_finish_matches"
+?? - data-testid="matches__search_match_btn"
+31 - data-testid="matches__home_team_"
+32 - data-testid="matches__home_team_goals_"
+33 - data-testid="matches__away_team_goals_"
+34 - data-testid="matches__away_team_"
+35 - data-testid="matches__match_status_"
+35 - data-testid="matches__match_status_btn_"
 
+## Matches settings
 
-## MATCHS SETTINGS
-
-36 - data-testid="insertion_matchs__select_home_team"
-37 - data-testid="insertion_matchs__select_quantity_goals_home_team"
-38 - data-testid="insertion_matchs__select_quantity_goals_away_team"
-39 - data-testid="insertion_matchs__select_away_team"
-40 - data-testid="insertion_matchs__save_match_btn"
-41 - data-testid="insertion_matchs__edit_match_btn"
-42 - data-testid="insertion_matchs__finish_match_btn"
+36 - data-testid="insertion_matches__select_home_team"
+37 - data-testid="insertion_matches__select_quantity_goals_home_team"
+38 - data-testid="insertion_matches__select_quantity_goals_away_team"
+39 - data-testid="insertion_matches__select_away_team"
+40 - data-testid="insertion_matches__save_match_btn"
+41 - data-testid="insertion_matches__edit_match_btn"
+42 - data-testid="insertion_matches__finish_match_btn"
