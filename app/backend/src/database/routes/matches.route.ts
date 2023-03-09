@@ -30,7 +30,7 @@ matchesRouter.patch('/:id', async (req: Request, res: Response) => {
   const { id } = req.params;
   const updatedScore: UpdatedScore = req.body;
   await matchesController.updateScore(id, updatedScore);
-  res.status(200).json({ message: 'Match finished' });
+  res.status(200).json({ message: 'Score updated' });
 });
 
 export default matchesRouter;
