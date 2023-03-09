@@ -35,4 +35,17 @@ describe('2 - test clubs.route', () => {
       expect(chaiHttpResponse.body).to.deep.equal(responseClubs);
     });
   });
+
+  describe('2.2 - when trying to get a club by id', () => {
+
+    before(async () => { sinon.stub(Club, "findByPk").resolves(databaseClubs[0]); });
+    after(() => { (Club.findByPk as sinon.SinonStub).restore(); });
+
+    it('a) the club should be returned', async () => {
+      const chaiHttpResponse: Response = await chai.request(app).get('/clubs/1');
+
+      expect(chaiHttpResponse).to.be.status(200);
+      expect(chaiHttpResponse.body).to.deep.equal(responseClubs[0]);
+    });
+  });
 });
