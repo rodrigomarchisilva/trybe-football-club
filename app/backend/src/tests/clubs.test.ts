@@ -5,7 +5,7 @@ import chaiHttp = require('chai-http');
 import { Response } from 'superagent';
 import { app } from '../app';
 import Club from '../database/models/Club';
-import { databaseClubs, responseClubs, responseLeaderboard, databaseClubsWithMatches } from './mocks';
+import { databaseClubs, responseClubs, responseDefaultLeaderboard, databaseClubsWithMatches, responseHomeLeaderboard } from './mocks';
 
 chai.use(chaiHttp);
 const {expect} = chai;
@@ -51,16 +51,29 @@ describe('2 - test clubs.route', () => {
     });
   });
 
-  describe('2.4 - when trying to get the leaderboard', () => {
+  describe('2.4 - when trying to get the default leaderboard', () => {
 
     before(async () => { sinon.stub(Club, "findAll").resolves(databaseClubsWithMatches); });
     after(() => { (Club.findAll as sinon.SinonStub).restore(); });
 
-    it('a) the leaderboard should be returned', async () => {
+    it('a) the default leaderboard should be returned', async () => {
       const chaiHttpResponse: Response = await chai.request(app).get('/leaderboard');
 
       expect(chaiHttpResponse).to.be.status(200);
-      expect(chaiHttpResponse.body).to.deep.equal(responseLeaderboard);
+      expect(chaiHttpResponse.body).to.deep.equal(responseDefaultLeaderboard);
+    });
+  });
+
+  describe('2.5 - when trying to get the home leaderboard', () => {
+
+    before(async () => { sinon.stub(Club, "findAll").resolves(databaseClubsWithMatches); });
+    after(() => { (Club.findAll as sinon.SinonStub).restore(); });
+
+    it('a) the home leaderboard should be returned', async () => {
+      const chaiHttpResponse: Response = await chai.request(app).get('/leaderboard/home');
+
+      expect(chaiHttpResponse).to.be.status(200);
+      expect(chaiHttpResponse.body).to.deep.equal(responseHomeLeaderboard);
     });
   });
 });
