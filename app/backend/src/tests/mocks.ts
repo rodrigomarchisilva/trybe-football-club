@@ -17,31 +17,58 @@ export const responseClubs: {}[] = [{ id: 1, clubName: 'Club 1' }, { id: 2, club
 
 //---------------------------------------------------------------------------------------------------
 
-export const responseLeaderboard: LeaderboardRow[] = [
+export const responseDefaultLeaderboard: LeaderboardRow[] = [
   {
-    "efficiency": 50,
-    "goalsBalance": 0,
-    "goalsFavor": 3,
-    "goalsOwn": 3,
-    "name": "club1",
-    "totalDraws": 0,
-    "totalGames": 2,
-    "totalLosses": 1,
-    "totalPoints": 3,
-    "totalVictories": 1
+    efficiency: 50,
+    goalsBalance: 0,
+    goalsFavor: 3,
+    goalsOwn: 3,
+    name: 'club1',
+    totalDraws: 0,
+    totalGames: 2,
+    totalLosses: 1,
+    totalPoints: 3,
+    totalVictories: 1
   },
   {
-    "efficiency": 50,
-    "goalsBalance": 0,
-    "goalsFavor": 3,
-    "goalsOwn": 3,
-    "name": "club2",
-    "totalDraws": 0,
-    "totalGames": 2,
-    "totalLosses": 1,
-    "totalPoints": 3,
-    "totalVictories": 1
+    efficiency: 50,
+    goalsBalance: 0,
+    goalsFavor: 3,
+    goalsOwn: 3,
+    name: 'club2',
+    totalDraws: 0,
+    totalGames: 2,
+    totalLosses: 1,
+    totalPoints: 3,
+    totalVictories: 1
   },
+];
+
+export const responseHomeLeaderboard: LeaderboardRow[] = [
+  {
+    name: 'club1',
+    totalPoints: 3,
+    totalGames: 2,
+    totalVictories: 1,
+    totalDraws: 0,
+    totalLosses: 1,
+    goalsFavor: 3,
+    goalsOwn: 3,
+    goalsBalance: 0,
+    efficiency: 50
+  },
+  {
+    name: 'club2',
+    totalPoints: 0,
+    totalGames: 0,
+    totalVictories: 0,
+    totalDraws: 0,
+    totalLosses: 0,
+    goalsFavor: 0,
+    goalsOwn: 0,
+    goalsBalance: 0,
+    efficiency: 0
+  }
 ];
 
 //---------------------------------------------------------------------------------------------------
