@@ -70,7 +70,7 @@ const sortLeaderbord = (unsortedLeaderbord: LeaderboardRow[]) => (
 
 const calculateEfficiency = (totalPoints: number, totalGames: number) => {
   const efficiency = (totalPoints / (totalGames * 3)) * 100;
-  return +(`${Math.round(+(`${efficiency}e+2`))}e-2`);
+  return +(`${Math.round(+(`${efficiency}e+2`))}e-2`) || 0;
 };
 
 const defaultLeaderboard = (club: ClubMatches) => {
