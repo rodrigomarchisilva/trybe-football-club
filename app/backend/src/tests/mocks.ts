@@ -71,6 +71,33 @@ export const responseHomeLeaderboard: LeaderboardRow[] = [
   }
 ];
 
+export const responseAwayLeaderboard: LeaderboardRow[] = [
+  {
+    name: 'club2',
+    totalPoints: 3,
+    totalGames: 2,
+    totalVictories: 1,
+    totalDraws: 0,
+    totalLosses: 1,
+    goalsFavor: 3,
+    goalsOwn: 3,
+    goalsBalance: 0,
+    efficiency: 50
+  },
+  {
+    name: 'club1',
+    totalPoints: 0,
+    totalGames: 0,
+    totalVictories: 0,
+    totalDraws: 0,
+    totalLosses: 0,
+    goalsFavor: 0,
+    goalsOwn: 0,
+    goalsBalance: 0,
+    efficiency: 0
+  }
+];
+
 //---------------------------------------------------------------------------------------------------
 
 const matchWithClubNames1 = new MatchWithClubNames({
