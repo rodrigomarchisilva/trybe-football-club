@@ -5,7 +5,7 @@ import chaiHttp = require('chai-http');
 import { Response } from 'superagent';
 import { app } from '../app';
 import Club from '../database/models/Club';
-import { databaseClubs, responseClubs, responseDefaultLeaderboard, databaseClubsWithMatches, responseHomeLeaderboard } from './mocks';
+import { databaseClubs, responseClubs, responseDefaultLeaderboard, databaseClubsWithMatches, responseHomeLeaderboard, responseAwayLeaderboard } from './mocks';
 
 chai.use(chaiHttp);
 const {expect} = chai;
@@ -74,6 +74,19 @@ describe('2 - test clubs.route', () => {
 
       expect(chaiHttpResponse).to.be.status(200);
       expect(chaiHttpResponse.body).to.deep.equal(responseHomeLeaderboard);
+    });
+  });
+
+  describe('2.6 - when trying to get the away leaderboard', () => {
+
+    before(async () => { sinon.stub(Club, "findAll").resolves(databaseClubsWithMatches); });
+    after(() => { (Club.findAll as sinon.SinonStub).restore(); });
+
+    it('a) the away leaderboard should be returned', async () => {
+      const chaiHttpResponse: Response = await chai.request(app).get('/leaderboard/away');
+
+      expect(chaiHttpResponse).to.be.status(200);
+      expect(chaiHttpResponse.body).to.deep.equal(responseAwayLeaderboard);
     });
   });
 });
