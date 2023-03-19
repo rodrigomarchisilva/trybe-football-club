@@ -3,6 +3,8 @@ import * as bodyParser from 'body-parser';
 import * as Cors from 'cors';
 import { loginRouter, clubsRouter, leaderboardsRouter } from './database/routes';
 import matchesRouter from './database/routes/matches.route';
+import swaggerUi from 'swagger-ui-express';
+import swaggerDocument from './swagger.json';
 
 class App {
   public app: express.Express;
@@ -26,6 +28,7 @@ class App {
     this.app.use(bodyParser.json());
     this.app.use(Cors());
 
+    this.app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
     this.app.use('/login', loginRouter);
     this.app.use('/clubs', clubsRouter);
     this.app.use('/matches', matchesRouter);
