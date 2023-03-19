@@ -1,2 +1,4 @@
 bcryptjs
 @types/bcryptjs
+swagger-ui-express
+@types/swagger-ui-express
