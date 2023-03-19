@@ -1,0 +1,7 @@
+Copyright terms
+
+This application was developed by Rodrigo Marchi Silva (backend, database and docker/compose) and Trybe (frontend and design).
+
+You are free to use this application for any purpose, including commercial purposes, at absolutely no cost.
+
+No paperwork, no royalties, no GNU-like "copyleft" restrictions, either. Just don't claim you wrote it.
