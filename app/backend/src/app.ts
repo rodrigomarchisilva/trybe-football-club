@@ -29,6 +29,7 @@ class App {
     this.app.use(Cors());
 
     this.app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+    this.app.use('/terms', express.static('terms/copyright.txt'));
     this.app.use('/login', loginRouter);
     this.app.use('/clubs', clubsRouter);
     this.app.use('/matches', matchesRouter);
