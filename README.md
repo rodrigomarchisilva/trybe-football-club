@@ -39,7 +39,7 @@
 * **Backend Technologies:** TypeScript, Node.js, Express, Sequelize, Mocha, Chai, Sinon.
 * **Frontend Technologies:** JavaScript, React, Axios, React Router.
 * **Secondary Technologies:** Docker (w/ compose);
-* **Description:** Project that provides information about football matches and classifications. I'm responsible for the whole backend, its tests and the database. Trybe provided the frontend.
+* **Description:** It provides information about football matches and classifications. I'm responsible for the whole backend, its tests and the database, as well as the docker-compose for the whole application. Trybe provided the frontend.
 
 ### :printer: Cloning the project and opening it on VSCode
 
@@ -150,7 +150,7 @@
 * **Tecnologias do Backend:** TypeScript, Node.js, Express, Sequelize, Mocha, Chai, Sinon.
 * **Tecnologias do Frontend:** JavaScript, React, Axios, React Router.
 * **Tecnologias secundárias:** Docker (c/ compose);
-* **Descrição:** Projeto que fornece informações sobre partidas e classificações de futebol. Eu sou responsável por todo o backend, seus testes e o banco de dados. A Trybe forneceu o frontend.
+* **Descrição:** Fornece informações sobre partidas de futebol e classificações. Eu sou responsável por todo o backend, seus testes e o banco de dados, assim como o docker-compose para toda a aplicação. A Trybe forneceu o frontend.
 
 ### :printer: Clonando o projeto e abrindo no VSCode
 
