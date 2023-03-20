@@ -18,9 +18,80 @@
     }
   ],
   "paths": {
-    "/login": {},
-    "/clubs": {},
-    "/matches": {},
-    "/leaderboard": {}
+    "/login": {
+      "post": {
+        "summary": "User login",
+        "description": "Login to the application",
+        "tags": ["Login"]
+      }
+    },
+    "/login/validate": {
+      "post": {
+        "summary": "Validate token",
+        "description": "Validate token",
+        "tags": ["Login"]
+      }
+    },
+    "/clubs": {
+      "get": {
+        "summary": "Get all clubs",
+        "description": "Get all clubs",
+        "tags": ["Clubs"]
+      }
+    },
+    "/clubs/{id}": {
+      "get": {
+        "summary": "Get a club",
+        "description": "Get a club",
+        "tags": ["Clubs"]
+      }
+    },
+    "/matches": {
+      "get": {
+        "summary": "Get all matches",
+        "description": "Get all matches",
+        "tags": ["Matches"]
+      },
+      "post": {
+        "summary": "Create a match",
+        "description": "Create a match",
+        "tags": ["Matches"]
+      }
+    },
+    "/matches/{id}/finish": {
+      "patch": {
+        "summary": "Finish a match",
+        "description": "Finish a match",
+        "tags": ["Matches"]
+      }
+    },
+    "/matches/{id}": {
+      "patch": {
+        "summary": "Update a match",
+        "description": "Update a match",
+        "tags": ["Matches"]
+      }
+    },
+    "/leaderboard": {
+      "get": {
+        "summary": "Get leaderboard",
+        "description": "Get leaderboard",
+        "tags": ["Leaderboard"]
+      }
+    },
+    "/leaderboard/home": {
+      "get": {
+        "summary": "Get home leaderboard",
+        "description": "Get home leaderboard",
+        "tags": ["Leaderboard"]
+      }
+    },
+    "/leaderboard/away": {
+      "get": {
+        "summary": "Get away leaderboard",
+        "description": "Get away leaderboard",
+        "tags": ["Leaderboard"]
+      }
+    }
   }
 }
