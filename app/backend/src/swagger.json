@@ -22,16 +22,69 @@
       "post": {
         "summary": "User login",
         "description": "Login to the application",
-        "tags": ["Login"]
-      }
-    },
+        "tags": ["Login"],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Login"
+              },
+              "example": {
+                "email": "user@gmail.com",
+                "password": "123456"
+              }
+        }}},
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "$ref": "#/components/schemas/UserWithToken"
+                },
+                "example": {
+                  "user": {
+                    "id": 1,
+                    "username": "user",
+                    "role": "admin",
+                    "email": "user@gmail.com"
+          }}}},
+          "401": {
+            "description": ["Incorrect email or password", "All fields must be filled"]
+          }
+        }
+    }}},
     "/login/validate": {
       "post": {
         "summary": "Validate token",
         "description": "Validate token",
-        "tags": ["Login"]
-      }
-    },
+        "tags": ["Login"],
+        "requestHeader": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Token"
+              },
+              "example": {
+                "authorization": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InVzZXJAZ21haWwuY29tIiwiaWF0IjoxNTE2MjM5MDIyfQ.-oOnIIT3EkPugmH9HSJckZtKm4W8LaMf0F1x-NMvLQw"
+              }
+        }}},
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                },
+                "example": "admin"
+          }}},
+          "401": {
+            "description": ["Invalid token", "Token not found", "Email not found"]
+          }
+        }
+    }},
     "/clubs": {
       "get": {
         "summary": "Get all clubs",
@@ -93,5 +146,52 @@
         "tags": ["Leaderboard"]
       }
     }
-  }
+  },
+  "components": {
+    "schemas": {
+      "Login": {
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          }
+      }},
+      "Token": {
+        "type": "object",
+        "properties": {
+          "authorization": {
+            "type": "string"
+          }
+      }},
+      "User": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "username": {
+            "type": "string"
+          },
+          "role": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          }
+      }},
+      "UserWithToken": {
+        "type": "object",
+        "properties": {
+          "user": {
+            "$ref": "#/components/schemas/User"
+          },
+          "token": {
+            "type": "string"
+          }
+        }
+      }
+  }}
 }
