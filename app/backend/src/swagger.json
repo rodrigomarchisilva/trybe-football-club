@@ -1,5 +1,5 @@
 {
-  "openapi": "3.1.0",
+  "openapi": "3.0.0",
   "info": {
     "title": "Football Club API",
     "description": "This project is from Trybe's course, Module 3 - Back-end Development. Its main goal is to practice TypeScript with the Sequelize ORM, and build a docker-compose for a full-stack application. It provides information about football matches and classifications. I'm responsible for the whole backend, its tests and the database, as well as the docker-compose for the whole application. Trybe provided the frontend.",
