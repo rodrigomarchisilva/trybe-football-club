@@ -3,8 +3,8 @@ import * as bodyParser from 'body-parser';
 import * as Cors from 'cors';
 import { loginRouter, clubsRouter, leaderboardsRouter } from './database/routes';
 import matchesRouter from './database/routes/matches.route';
-import swaggerUi from 'swagger-ui-express';
-import swaggerDocument from './swagger.json';
+import * as swaggerUi from 'swagger-ui-express';
+import * as swaggerDocument from './swagger.json';
 
 class App {
   public app: express.Express;
