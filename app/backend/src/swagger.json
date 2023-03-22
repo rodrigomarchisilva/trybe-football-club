@@ -49,7 +49,9 @@
                     "username": "user",
                     "role": "admin",
                     "email": "user@gmail.com"
-          }}}},
+                  },
+                  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InVzZXJAZ21haWwuY29tIiwiaWF0IjoxNTE2MjM5MDIyfQ.-oOnIIT3EkPugmH9HSJckZtKm4W8LaMf0F1x-NMvLQw"
+          }}},
           "401": {
             "description": ["Incorrect email or password", "All fields must be filled"]
           }
