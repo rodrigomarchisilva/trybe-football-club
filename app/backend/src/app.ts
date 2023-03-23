@@ -1,8 +1,7 @@
 import * as express from 'express';
 import * as bodyParser from 'body-parser';
 import * as Cors from 'cors';
-import { loginRouter, clubsRouter, leaderboardsRouter } from './database/routes';
-import matchesRouter from './database/routes/matches.route';
+import { loginRouter, clubsRouter, leaderboardsRouter, termsRouter, matchesRouter } from './database/routes';
 import * as swaggerUi from 'swagger-ui-express';
 import * as swaggerDocument from './swagger.json';
 
@@ -29,7 +28,7 @@ class App {
     this.app.use(Cors());
 
     this.app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
-    this.app.use('/terms', express.static('terms/copyright.txt'));
+    this.app.use('/terms', termsRouter);
     this.app.use('/login', loginRouter);
     this.app.use('/clubs', clubsRouter);
     this.app.use('/matches', matchesRouter);
