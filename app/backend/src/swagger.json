@@ -41,8 +41,14 @@
               "application/json": {
                 "schema": {
                   "type": "object",
-                  "$ref": "#/components/schemas/UserWithToken"
-                },
+                  "properties": {
+                    "user": {
+                      "$ref": "#/components/schemas/User"
+                    },
+                    "token": {
+                      "type": "string"
+                    }
+                }},
                 "example": {
                   "user": {
                     "id": 1,
@@ -62,16 +68,16 @@
         "summary": "Validate token",
         "description": "Validate token",
         "tags": ["Login"],
-        "requestHeader": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/Token"
-              },
-              "example": {
-                "authorization": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InVzZXJAZ21haWwuY29tIiwiaWF0IjoxNTE2MjM5MDIyfQ.-oOnIIT3EkPugmH9HSJckZtKm4W8LaMf0F1x-NMvLQw"
-              }
-        }}},
+        "parameters": [{
+          "in": "header",
+          "name": "Authorization",
+          "description": "Token",
+          "schema": {
+            "type": "string"
+          },
+          "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InVzZXJAZ21haWwuY29tIiwiaWF0IjoxNTE2MjM5MDIyfQ.-oOnIIT3EkPugmH9HSJckZtKm4W8LaMf0F1x-NMvLQw",
+          "required": true
+        }],
         "responses": {
           "200": {
             "description": "OK",
@@ -161,13 +167,6 @@
             "type": "string"
           }
       }},
-      "Token": {
-        "type": "object",
-        "properties": {
-          "authorization": {
-            "type": "string"
-          }
-      }},
       "User": {
         "type": "object",
         "properties": {
@@ -183,17 +182,6 @@
           "email": {
             "type": "string"
           }
-      }},
-      "UserWithToken": {
-        "type": "object",
-        "properties": {
-          "user": {
-            "$ref": "#/components/schemas/User"
-          },
-          "token": {
-            "type": "string"
-          }
-        }
-      }
+      }}
   }}
 }
