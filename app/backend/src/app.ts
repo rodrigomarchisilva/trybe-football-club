@@ -1,9 +1,11 @@
 import * as express from 'express';
 import * as bodyParser from 'body-parser';
 import * as Cors from 'cors';
-import { loginRouter, clubsRouter, leaderboardsRouter, termsRouter, matchesRouter } from './database/routes';
 import * as swaggerUi from 'swagger-ui-express';
 import * as swaggerDocument from './swagger.json';
+import {
+  loginRouter, clubsRouter, leaderboardsRouter, termsRouter, matchesRouter,
+} from './database/routes';
 
 class App {
   public app: express.Express;
