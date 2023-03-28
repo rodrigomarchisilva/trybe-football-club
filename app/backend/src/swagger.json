@@ -111,7 +111,28 @@
       "get": {
         "summary": "Get all matches",
         "description": "Get all matches",
-        "tags": ["Matches"]
+        "tags": ["Matches"],
+        "parameters": [
+          {
+            "name": "inProgress",
+            "in": "query",
+            "description": "Filter matches by status (e.g. 'in progress')",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A list of matches, filtered by status or not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Match"
+        }}}}}}
       },
       "post": {
         "summary": "Create a match",
@@ -181,6 +202,38 @@
           },
           "email": {
             "type": "string"
+          }
+      }},
+      "Match": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "homeTeam": {
+            "type": "string"
+          },
+          "homeTeamGoals": {
+            "type": "integer"
+          },
+          "awayTeam": {
+            "type": "string"
+          },
+          "awayTeamGoals": {
+            "type": "integer"
+          },
+          "inProgress": {
+            "type": "string"
+          },
+          "homeClub": {
+            "clubName": {
+              "type": "string"
+            }
+          },
+          "awayClub": {
+            "clubName": {
+              "type": "string"
+            }
           }
       }}
   }}
