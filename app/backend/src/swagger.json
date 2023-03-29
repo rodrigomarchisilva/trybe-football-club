@@ -116,11 +116,12 @@
           {
             "name": "inProgress",
             "in": "query",
-            "description": "Filter matches by status (e.g. 'in progress')",
+            "description": "Filter matches by status (e.g. 'inProgress = true')",
             "required": false,
             "schema": {
               "type": "string"
-            }
+            },
+            "example": "true"
           }
         ],
         "responses": {
@@ -131,15 +132,106 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/Match"
-        }}}}}}
-      },
+                    "$ref": "#/components/schemas/MatchWithIdAndClubNames"
+                }},
+                "example": [
+                  {
+                    "id": 1,
+                    "homeTeam": 16,
+                    "homeTeamGoals": 1,
+                    "awayTeam": 8,
+                    "awayTeamGoals": 1,
+                    "inProgress": false,
+                    "homeClub": {
+                      "clubName": "São Paulo"
+                    },
+                    "awayClub": {
+                      "clubName": "Grêmio"
+                    }
+                  },
+                  {
+                    "id": 41,
+                    "homeTeam": 16,
+                    "homeTeamGoals": 2,
+                    "awayTeam": 9,
+                    "awayTeamGoals": 0,
+                    "inProgress": true,
+                    "homeClub": {
+                      "clubName": "São Paulo"
+                    },
+                    "awayClub": {
+                      "clubName": "Internacional"
+                    }
+                  }
+                ]
+          }}},
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    }
+                }},
+                "example": {
+                  "message": "Internal server error"
+                }
+      }}}}},
       "post": {
         "summary": "Create a match",
         "description": "Create a match",
-        "tags": ["Matches"]
-      }
-    },
+        "tags": ["Matches"],
+        "requestBody": {
+          "description": "Match object to create",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Match"
+              },
+              "example": {
+                "homeTeam": 16,
+                "awayTeam": 8,
+                "homeTeamGoals": 2,
+                "awayTeamGoals": 2,
+                "inProgress": true
+              }
+        }}},
+        "responses": {
+          "201": {
+            "description": "Match created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MatchWithIdAndClubNames"
+                },
+                "example": {
+                  "id": 1,
+                  "homeTeam": 16,
+                  "homeTeamGoals": 2,
+                  "awayTeam": 8,
+                  "awayTeamGoals": 2,
+                  "inProgress": true
+                }
+          }}},
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    }
+                }},
+                "example": {
+                  "message": "Internal server error"
+                }
+    }}}}}},
     "/matches/{id}/finish": {
       "patch": {
         "summary": "Finish a match",
@@ -207,9 +299,6 @@
       "Match": {
         "type": "object",
         "properties": {
-          "id": {
-            "type": "integer"
-          },
           "homeTeam": {
             "type": "string"
           },
@@ -223,18 +312,41 @@
             "type": "integer"
           },
           "inProgress": {
-            "type": "string"
-          },
-          "homeClub": {
-            "clubName": {
-              "type": "string"
-            }
-          },
-          "awayClub": {
-            "clubName": {
-              "type": "string"
-            }
+            "type": "boolean"
           }
-      }}
+      }},
+      "MatchWithId": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Match"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "integer"
+          }}}
+      ]},
+      "MatchWithIdAndClubNames": {
+        "allOf": [
+            {
+              "$ref": "#/components/schemas/MatchWithId"
+            },
+            {
+              "type": "object",
+              "properties": {
+                "homeClub": {
+                  "type": "object",
+                  "properties": {
+                    "clubName": {
+                      "type": "string"
+                }}},
+                "awayClub": {
+                  "type": "object",
+                  "properties": {
+                    "clubName": {
+                      "type": "string"
+            }}}}}
+      ]}
   }}
 }
